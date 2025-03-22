@@ -1,0 +1,11 @@
+.header-inner {
+    background-color: black;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-inner .header-inner__logo img {
+    width: 220px;
+}
