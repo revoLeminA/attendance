@@ -1,35 +1,42 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/auth.css') }}">
+@endsection
+
+@section('header-nav')
+    <a href="/login">a</a>
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="container__ttl">管理者ログイン</div>
-    <form class="login-form" action="/admin/login" method="post">
-        @csrf
-        <div class="form__item">
-            <label class="form__item-ttl" for="email">メールアドレス</label>
-            <input type="text" class="form__item-input" name="email" value="{{ old('email') }}">
-            <div class="form__item-error">
-                @error('email')
-                    {{ $message }}
-                @enderror
+    <div class="container">
+        <div class="container__ttl">管理者ログイン</div>
+        <form class="login-form" action="/admin/login" method="post">
+            @csrf
+            <div class="form__item">
+                <label class="form__item-ttl" for="email">メールアドレス</label>
+                <input type="text" class="form__item-input" name="email" value="{{ old('email') }}">
+                <div class="form__item-error">
+                    @error('email')
+                        {{ $message }}
+                    @enderror
+                    @error('failed')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
-        </div>
-        <div class="form__item">
-            <label class="form__item-ttl" for="password">パスワード</label>
-            <input type="password" class="form__item-input" name="password" value="{{ old('password') }}">
-            <div class="form__item-error">
-                @error('password')
-                    {{ $message }}
-                @enderror
+            <div class="form__item">
+                <label class="form__item-ttl" for="password">パスワード</label>
+                <input type="password" class="form__item-input" name="password" value="{{ old('password') }}">
+                <div class="form__item-error">
+                    @error('password')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
-        </div>
-        <div class="form__btn">
-            <button class="form__btn-submit" type="submit">管理者ログインする</button>
-        </div>
-    </form>
-</div>
+            <div class="form__btn">
+                <button class="form__btn-submit" type="submit">管理者ログインする</button>
+            </div>
+        </form>
+    </div>
 @endsection

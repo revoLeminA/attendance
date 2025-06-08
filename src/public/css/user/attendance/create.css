@@ -1,0 +1,60 @@
+.container {
+    max-width: 1000px;
+    margin: 100px auto;
+}
+
+.container .current-status {
+    margin: 0px auto;
+    padding: 5px;
+    text-align: center;
+    width: 70px;
+    font-size: 12px;
+    background-color: #c8c8c8;
+    border-radius: 15px;
+}
+
+.container .current-date {
+    margin: 10px auto;
+    text-align: center;
+    font-size: 24px;
+}
+
+.container .current-time {
+    margin: 10px auto;
+    padding: 5px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.forms-group {
+    display: flex;
+    justify-content: center;
+}
+
+.form__btn {
+    text-align: center;
+}
+
+.form__btn-submit {
+    margin: 20px;
+    padding: 5px;
+    width: 80px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form__btn .reverse {
+    color: black;
+    background-color: white;
+}
+
+.fin-msg {
+    margin: 30px;
+    text-align: center;
+    font-weight: bold;
+}

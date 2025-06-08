@@ -46,9 +46,7 @@ html {
     cursor: default;
     /* 1 */
 
-    -webkit-tap-highlight-color: transparent
-        /* 4 */
-    ;
+    -webkit-tap-highlight-color: transparent /* 4 */;
     -ms-text-size-adjust: 100%;
     /* 5 */
     -webkit-text-size-adjust: 100%;

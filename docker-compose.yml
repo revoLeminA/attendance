@@ -1,4 +1,7 @@
 version: '3.8'
+
+volumes:
+    maildir: {}
 services:
     nginx:
         image: nginx:1.21.1
@@ -25,6 +28,7 @@ services:
         volumes:
             - ./docker/mysql/data:/var/lib/mysql
             - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+        user: 1000:1000
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         environment:
@@ -36,3 +40,12 @@ services:
             - mysql
         ports:
             - 8080:80
+    mail:
+        image: mailhog/mailhog
+        ports:
+            - "8025:8025"
+        environment:
+            MH_STORAGE: maildir
+            MH_MAILDIR_PATH: /tmp
+        volumes:
+            - maildir:/tmp

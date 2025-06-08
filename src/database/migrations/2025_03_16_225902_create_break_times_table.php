@@ -16,8 +16,8 @@ class CreateBreakTimesTable extends Migration
         Schema::create('break_times', function (Blueprint $table) {
             $table->id();
             $table->foreignId('attendance_id')->constrained('attendances')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->time('break_start');
-            $table->time('break_end');
+            $table->time('break_start')->nullable();
+            $table->time('break_end')->nullable();
             $table->timestamps();
         });
     }

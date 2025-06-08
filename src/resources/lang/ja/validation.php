@@ -86,7 +86,7 @@ return [
     'min'                  => [
         'numeric' => ':attributeには、:min以上の数字を指定してください。',
         'file'    => ':attributeには、:min KB以上のファイルを指定してください。',
-        'string'  => ':attributeは、:min文字以上にしてください。',
+        'string'  => ':attributeは:min文字以上で入力してください',
         'array'   => ':attributeの項目は、:min個以上にしてください。',
     ],
     'multiple_of'          => 'The :attribute must be a multiple of :value',
@@ -96,14 +96,14 @@ return [
     'password'             => 'パスワードが正しくありません。',
     'present'              => ':attributeが存在している必要があります。',
     'regex'                => ':attributeには、有効な正規表現を指定してください。',
-    'required'             => ':attributeは、必ず指定してください。',
+    'required'             => ':attributeを入力してください',
     'required_if'          => ':otherが:valueの場合、:attributeを指定してください。',
     'required_unless'      => ':otherが:values以外の場合、:attributeを指定してください。',
     'required_with'        => ':valuesが指定されている場合、:attributeも指定してください。',
     'required_with_all'    => ':valuesが全て指定されている場合、:attributeも指定してください。',
     'required_without'     => ':valuesが指定されていない場合、:attributeを指定してください。',
     'required_without_all' => ':valuesが全て指定されていない場合、:attributeを指定してください。',
-    'same'                 => ':attributeと:otherが一致しません。',
+    'same'                 => ':otherと一致しません',
     'size'                 => [
         'numeric' => ':attributeには、:sizeを指定してください。',
         'file'    => ':attributeには、:size KBのファイルを指定してください。',
@@ -146,5 +146,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'お名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'password_confirmation' => '確認用パスワード',
+    ],
 ];
