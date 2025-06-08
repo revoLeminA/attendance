@@ -1,0 +1,26 @@
+.header-nav__list {
+    display: flex;
+    align-items: center;
+    margin: inherit;
+}
+
+.header-nav__item {
+    margin-left: 15px;
+}
+
+.header-nav__item:last-child {
+    margin-left: 10px;
+}
+
+.header-nav__item a {
+    display: block;
+    color: white;
+}
+
+.header-nav__btn {
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

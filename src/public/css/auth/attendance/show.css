@@ -1,0 +1,104 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container__ttl {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    border-left: 5px solid #000;
+}
+
+table {
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    text-align: left;
+}
+
+tr {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+tr th {
+    padding-left: 10%;
+    width: 40%;
+    height: 70px;
+    font-weight: normal;
+}
+
+tr td span {
+    font-weight: bold;
+}
+
+/* 日付 */
+tr:nth-of-type(2) td span:last-of-type {
+    padding-left: 170px;
+}
+
+/* 出勤・退勤・休憩時間 */
+[type="time"] {
+    position: relative;
+    padding: 5px;
+    width: 60px;
+    text-align: center;
+    font-weight: bold;
+}
+
+[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    opacity: 0;
+}
+
+tr:not(:first-of-type):not(:nth-of-type(2)) td:has(span) span {
+    display: inline-block;
+    width: 60px;
+}
+
+tr td:has(span) label {
+    padding: 0 75px;
+}
+
+tr td:has(input) label {
+    padding: 0 70px;
+}
+
+/* 備考 */
+tr:last-of-type td textarea {
+    width: 285px;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+tr:last-of-type td p {
+    width: 285px;
+    font-weight: bold;
+}
+
+.form__item-error {
+    color: red;
+}
+
+.form__btn-deleted {
+    text-align: right;
+    color: red;
+}
+
+/* 修正ボタン */
+.form__btn {
+    margin-top: 50px;
+    text-align: right;
+}
+
+.form__btn-submit {
+    background-color: black;
+    color: white;
+    width: 100px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
