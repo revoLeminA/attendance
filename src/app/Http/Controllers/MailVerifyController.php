@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 
@@ -33,7 +32,7 @@ class MailVerifyController extends Controller
     public function send()
     {
         // すでにメール確認している場合は、ホーム画面にリダイレクト
-        if (Auth::user()->hasVerifiedEmail()) {
+        if (Auth::user() && !is_null(Auth::user()->email_verified_at)) {
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 

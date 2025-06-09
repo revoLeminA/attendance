@@ -17,7 +17,7 @@
 
 ## 使用技術
 - PHP 8.2.0
-- Laravel 9.52.18
+- Laravel 8.83.29
 - MySRL 8.0.26
 
 ## ER図
@@ -26,3 +26,4 @@
 ## URL
 - 開発環境：http://localhost/
 - phpMyAdmin：http://localhost:8080/
+- MailHog:http://localhost:8025/
