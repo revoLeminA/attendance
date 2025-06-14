@@ -56,7 +56,6 @@ class AttendancesTableSeeder extends Seeder
             'status' => '退勤済',
             'date' => Carbon::create(2025, 02, 02)->format('Y/m/d'),
             'clock_in' => Carbon::create(2025, 02, 02)->addHour(9)->format('H:i'),
-            // 'clock_out' => Carbon::create(2025, 02, 01)->addHour(18)->format('H:i'),
             'created_at' => Carbon::create(2025, 02, 02)->addHour(9),
             'updated_at' => Carbon::create(2025, 02, 02)->addHour(9),
         ]);

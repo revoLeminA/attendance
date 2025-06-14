@@ -17,11 +17,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        // 新規登録時、認証メール送信
-        // Registered::class => [
-        //     SendEmailVerificationNotification::class,
-        // ],
-        // ログイン時、認証メール送信
+        // ログイン時（新規登録時）、認証メール送信
         Login::class => [
             LoginSendEmailVerificationNotification::class,
         ],
