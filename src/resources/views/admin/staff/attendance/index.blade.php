@@ -94,5 +94,13 @@
                 </tr>
             @endforeach
         </table>
+        <form
+            action="{{ route('admin.staff.attendance.csv', ['id' => $user->id, 'year' => $thisYM->format('Y'), 'month' => $thisYM->format('m')]) }}"
+            method="post">
+            @csrf
+            <div class="form__btn">
+                <button class="form__btn-submit">CSV出力</button>
+            </div>
+        </form>
     </div>
 @endsection
