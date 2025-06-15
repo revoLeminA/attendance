@@ -67,22 +67,47 @@
                 <tr>
                     <th>出勤・退勤</th>
                     <td>
-                        @if ($isRequested)
-                            <span>{{ old('corrected_clock_in') ?? $attendance->corrected_clock_in->format('H:i') }}</span>
-                        @elseif ($attendance->clock_in)
-                            <input type="time" name="corrected_clock_in"
-                                value="{{ old('corrected_clock_in') ?? $attendance->clock_in->format('H:i') }}">
+                        @if ($isAdmin)
+                            @if ($isRequested)
+                                <input type="time" name="corrected_clock_in"
+                                    value="{{ old('corrected_clock_in') ?? $attendance->corrected_clock_in->format('H:i') }}">
+                            @elseif ($attendance->clock_in)
+                                <input type="time" name="corrected_clock_in"
+                                    value="{{ old('corrected_clock_in') ?? $attendance->clock_in->format('H:i') }}">
+                            @else
+                                <input type="time" name="corrected_clock_in" value="{{ old('corrected_clock_in') }}">
+                            @endif
                         @else
-                            <input type="time" name="corrected_clock_in" value="{{ old('corrected_clock_in') }}">
+                            @if ($isRequested)
+                                <span>{{ old('corrected_clock_in') ?? $attendance->corrected_clock_in->format('H:i') }}</span>
+                            @elseif ($attendance->clock_in)
+                                <input type="time" name="corrected_clock_in"
+                                    value="{{ old('corrected_clock_in') ?? $attendance->clock_in->format('H:i') }}">
+                            @else
+                                <input type="time" name="corrected_clock_in" value="{{ old('corrected_clock_in') }}">
+                            @endif
                         @endif
                         <label for="">～</label>
-                        @if ($isRequested)
-                            <span>{{ old('corrected_clock_out') ?? $attendance->corrected_clock_out->format('H:i') }}</span>
-                        @elseif ($attendance->clock_out)
-                            <input type="time" name="corrected_clock_out"
-                                value="{{ old('corrected_clock_out') ?? $attendance->clock_out->format('H:i') }}">
+                        @if ($isAdmin)
+                            @if ($isRequested)
+                                <input type="time" name="corrected_clock_out"
+                                    value="{{ old('corrected_clock_out') ?? $attendance->corrected_clock_out->format('H:i') }}">
+                            @elseif ($attendance->clock_out)
+                                <input type="time" name="corrected_clock_out"
+                                    value="{{ old('corrected_clock_out') ?? $attendance->clock_out->format('H:i') }}">
+                            @else
+                                <input type="time" name="corrected_clock_out"
+                                    value="{{ old('corrected_clock_out') }}">
+                            @endif
                         @else
-                            <input type="time" name="corrected_clock_out" value="{{ old('corrected_clock_out') }}">
+                            @if ($isRequested)
+                                <span>{{ old('corrected_clock_out') ?? $attendance->corrected_clock_out->format('H:i') }}</span>
+                            @elseif ($attendance->clock_out)
+                                <input type="time" name="corrected_clock_out"
+                                    value="{{ old('corrected_clock_out') ?? $attendance->clock_out->format('H:i') }}">
+                            @else
+                                <input type="time" name="corrected_clock_out" value="{{ old('corrected_clock_out') }}">
+                            @endif
                         @endif
                         <div class="form__item-error">
                             @error('corrected_clock_in')
@@ -99,29 +124,60 @@
                         <tr>
                             <th>休憩{{ $index + 1 }}</th>
                             <td>
-                                @if ($isRequested)
-                                    <span>{{ old('corrected_break_starts.' . $index) ?? $breakTime->corrected_break_start->format('H:i') }}</span>
-                                @else
-                                    @if ($breakTime->break_start)
+                                @if ($isAdmin)
+                                    @if ($isRequested)
                                         <input type="time" name="corrected_break_starts[]"
-                                            value="{{ old('corrected_break_starts.' . $index) ?? $breakTime->break_start->format('H:i') }}">
+                                            value="{{ old('corrected_break_starts.' . $index) ?? $breakTime->corrected_break_start->format('H:i') }}">
                                     @else
-                                        <input type="time" name="corrected_break_starts[]"
-                                            value="{{ old('corrected_break_starts.' . $index) }}">
+                                        @if ($breakTime->break_start)
+                                            <input type="time" name="corrected_break_starts[]"
+                                                value="{{ old('corrected_break_starts.' . $index) ?? $breakTime->break_start->format('H:i') }}">
+                                        @else
+                                            <input type="time" name="corrected_break_starts[]"
+                                                value="{{ old('corrected_break_starts.' . $index) }}">
+                                        @endif
+                                    @endif
+                                @else
+                                    @if ($isRequested)
+                                        <span>{{ old('corrected_break_starts.' . $index) ?? $breakTime->corrected_break_start->format('H:i') }}</span>
+                                    @else
+                                        @if ($breakTime->break_start)
+                                            <input type="time" name="corrected_break_starts[]"
+                                                value="{{ old('corrected_break_starts.' . $index) ?? $breakTime->break_start->format('H:i') }}">
+                                        @else
+                                            <input type="time" name="corrected_break_starts[]"
+                                                value="{{ old('corrected_break_starts.' . $index) }}">
+                                        @endif
                                     @endif
                                 @endif
                                 <label for="">～</label>
-                                @if ($isRequested)
-                                    <span>{{ old('corrected_break_ends.' . $index) ?? $breakTime->corrected_break_end->format('H:i') }}</span>
-                                @else
-                                    @if ($breakTime->break_end)
+                                @if ($isAdmin)
+                                    @if ($isRequested)
                                         <input type="time" name="corrected_break_ends[]"
-                                            value="{{ old('corrected_break_ends.' . $index) ?? $breakTime->break_end->format('H:i') }}">
+                                            value="{{ old('corrected_break_ends.' . $index) ?? $breakTime->corrected_break_end->format('H:i') }}">
                                     @else
-                                        <input type="time" name="corrected_break_ends[]"
-                                            value="{{ old('corrected_break_ends.' . $index) }}">
+                                        @if ($breakTime->break_end)
+                                            <input type="time" name="corrected_break_ends[]"
+                                                value="{{ old('corrected_break_ends.' . $index) ?? $breakTime->break_end->format('H:i') }}">
+                                        @else
+                                            <input type="time" name="corrected_break_ends[]"
+                                                value="{{ old('corrected_break_ends.' . $index) }}">
+                                        @endif
+                                        <input type="hidden" name="break_time_ids[]" value="{{ $breakTime->id }}">
                                     @endif
-                                    <input type="hidden" name="break_time_ids[]" value="{{ $breakTime->id }}">
+                                @else
+                                    @if ($isRequested)
+                                        <span>{{ old('corrected_break_ends.' . $index) ?? $breakTime->corrected_break_end->format('H:i') }}</span>
+                                    @else
+                                        @if ($breakTime->break_end)
+                                            <input type="time" name="corrected_break_ends[]"
+                                                value="{{ old('corrected_break_ends.' . $index) ?? $breakTime->break_end->format('H:i') }}">
+                                        @else
+                                            <input type="time" name="corrected_break_ends[]"
+                                                value="{{ old('corrected_break_ends.' . $index) }}">
+                                        @endif
+                                        <input type="hidden" name="break_time_ids[]" value="{{ $breakTime->id }}">
+                                    @endif
                                 @endif
                                 <div class="form__item-error">
                                     @error('corrected_break_starts.' . $index)
@@ -137,36 +193,74 @@
                     <tr>
                         <th>休憩{{ $index + 2 }}</th>
                         <td>
-                            @if ($isRequested)
-                                <span>{{ old('corrected_break_start_add') }}</span>
-                                <label for="">～</label>
-                                <span>{{ old('corrected_break_end_add') }}</span>
+                            @if ($isAdmin)
+                                @if ($isRequested)
+                                    <input type="time" name="corrected_break_start_add"
+                                        value="{{ old('corrected_break_start_add') }}">
+                                    <label for="">～</label>
+                                    <input type="time" name="corrected_break_end_add"
+                                        value="{{ old('corrected_break_end_add') }}">
+                                @else
+                                    <input type="time" name="corrected_break_start_add"
+                                        value="{{ old('corrected_break_start_add') }}">
+                                    <label for="">～</label>
+                                    <input type="time" name="corrected_break_end_add"
+                                        value="{{ old('corrected_break_end_add') }}">
+                                @endif
                             @else
-                                <input type="time" name="corrected_break_start_add"
-                                    value="{{ old('corrected_break_start_add') }}">
-                                <label for="">～</label>
-                                <input type="time" name="corrected_break_end_add"
-                                    value="{{ old('corrected_break_end_add') }}">
-                                <div class="form__item-error">
-                                    @error('corrected_break_start_add')
-                                        {{ $message }}
-                                    @enderror
-                                    @error('corrected_break_end_add')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
+                                @if ($isRequested)
+                                    <span>{{ old('corrected_break_start_add') }}</span>
+                                    <label for="">～</label>
+                                    <span>{{ old('corrected_break_end_add') }}</span>
+                                @else
+                                    <input type="time" name="corrected_break_start_add"
+                                        value="{{ old('corrected_break_start_add') }}">
+                                    <label for="">～</label>
+                                    <input type="time" name="corrected_break_end_add"
+                                        value="{{ old('corrected_break_end_add') }}">
+                                @endif
                             @endif
+                            <div class="form__item-error">
+                                @error('corrected_break_start_add')
+                                    {{ $message }}
+                                @enderror
+                                @error('corrected_break_end_add')
+                                    {{ $message }}
+                                @enderror
+                            </div>
                         </td>
                     </tr>
                 @else
                     <tr>
                         <th>休憩1</th>
                         <td>
-                            <input type="time" name="corrected_break_start_add"
-                                value="{{ old('corrected_break_start_add') }}">
-                            <label for="">～</label>
-                            <input type="time" name="corrected_break_end_add"
-                                value="{{ old('corrected_break_end_add') }}">
+                            @if ($isAdmin)
+                                @if ($isRequested)
+                                    <input type="time" name="corrected_break_start_add"
+                                        value="{{ old('corrected_break_start_add') }}">
+                                    <label for="">～</label>
+                                    <input type="time" name="corrected_break_end_add"
+                                        value="{{ old('corrected_break_end_add') }}">
+                                @else
+                                    <input type="time" name="corrected_break_start_add"
+                                        value="{{ old('corrected_break_start_add') }}">
+                                    <label for="">～</label>
+                                    <input type="time" name="corrected_break_end_add"
+                                        value="{{ old('corrected_break_end_add') }}">
+                                @endif
+                            @else
+                                @if ($isRequested)
+                                    <span>{{ old('corrected_break_start_add') }}</span>
+                                    <label for="">～</label>
+                                    <span>{{ old('corrected_break_end_add') }}</span>
+                                @else
+                                    <input type="time" name="corrected_break_start_add"
+                                        value="{{ old('corrected_break_start_add') }}">
+                                    <label for="">～</label>
+                                    <input type="time" name="corrected_break_end_add"
+                                        value="{{ old('corrected_break_end_add') }}">
+                                @endif
+                            @endif
                             <div class="form__item-error">
                                 @error('corrected_break_start_add')
                                     {{ $message }}
@@ -181,10 +275,18 @@
                 <tr>
                     <th>備考</th>
                     <td>
-                        @if ($isRequested)
-                            <p>{{ old('corrected_reason') ?? $attendance->corrected_reason }}</p>
+                        @if ($isAdmin)
+                            @if ($isRequested)
+                                <textarea name="corrected_reason">{{ old('corrected_reason') ?? $attendance->corrected_reason }}</textarea>
+                            @else
+                                <textarea name="corrected_reason">{{ old('corrected_reason') }}</textarea>
+                            @endif
                         @else
-                            <textarea name="corrected_reason">{{ old('corrected_reason') }}</textarea>
+                            @if ($isRequested)
+                                <p>{{ $attendance->corrected_reason }}</p>
+                            @else
+                                <textarea name="corrected_reason">{{ old('corrected_reason') }}</textarea>
+                            @endif
                         @endif
                         <div class="form__item-error">
                             @error('corrected_reason')
@@ -202,6 +304,7 @@
                 @endif
             @else
                 <div class="form__btn">
+                    <input type="hidden" name="attendance_id" value="{{ $attendance->id }}">
                     <button class="form__btn-submit" type="submit">修正</button>
                 </div>
             @endif
