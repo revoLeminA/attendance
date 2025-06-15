@@ -18,7 +18,7 @@
 ## 使用技術
 - PHP 8.2.0
 - Laravel 8.83.29
-- MySRL 8.0.26
+- MySQL 8.0.26
 
 ## ER図
 ![ER diagram of the contact form](attendance.drawio.png)
