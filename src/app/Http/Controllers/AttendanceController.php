@@ -77,7 +77,7 @@ class AttendanceController extends Controller
                 'status' => '勤務中',
             ]);
             $attendance->touch();
-            BreakTime::where('attendance_id', $attendance->id)->first()->update([
+            BreakTime::where('attendance_id', $attendance->id)->where('break_end', null)->first()->update([
                 'break_end' => $now->copy()->format('H:i'),
             ]);
             BreakTime::where('attendance_id', $attendance->id)->first()->touch();

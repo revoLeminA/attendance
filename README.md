@@ -10,7 +10,11 @@
 ### Laravel環境構築
 1. docker-compose exec php bash
 2. composer install
-3. .env.exampleファイルから.envを作成し、環境変数を構築
+3. .env.exampleファイルから.envを作成し、環境変数を構築（MAILは以下のように修正）
+````
+MAIL_HOST=mail
+MAIL_FROM_ADDRESS=info@example.com
+````
 4. php artisan key:generate
 5. php artisan migrate
 6. php artisan db:seed

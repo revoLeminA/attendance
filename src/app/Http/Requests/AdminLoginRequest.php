@@ -28,8 +28,26 @@ class AdminLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ];
+    }
+
+    public function messages()
+    {
+        return array_merge(parent::messages(), [
+            'email.required' => ':attributeを入力してください',
+            'email.email' => ':attributeは有効なメールアドレス形式で入力してください',
+            'password.required' => ':attributeを入力してください',
+            'password.min' => ':attributeは:min文字以上で入力してください'
+        ]);
+    }
+
+    public function attributes()
+    {
+        return [
+            'email' => 'メール',
+            'passwordt' => 'パスワード',
         ];
     }
 

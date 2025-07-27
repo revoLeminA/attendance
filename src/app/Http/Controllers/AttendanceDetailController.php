@@ -44,7 +44,7 @@ class AttendanceDetailController extends Controller
         return view('auth.attendance.show', compact('isAdmin', 'isRequested', 'isBreakTimesNull', 'attendance', 'user', 'breakTimes'));
     }
 
-    // 勤怠修正登録処理
+    // 勤怠修正処理
     public function update(CorrectedAttendanceRequest $request)
     {
         // 認証ミドルウェアチェック

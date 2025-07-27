@@ -17,7 +17,10 @@ class CorrectedAttendancesTableSeeder extends Seeder
      */
     public function run()
     {
-        $calender = Carbon::create(2025, 02, 01);
+        $year = Carbon::now()->subMonth()->format('Y');
+        $month = Carbon::now()->subMonth()->format('m');
+
+        $calender = Carbon::create($year, $month, 01);
 
         DB::table('corrected_attendances')->insert([
             'user_id' => User::first()->id,
@@ -31,7 +34,7 @@ class CorrectedAttendancesTableSeeder extends Seeder
             'updated_at' => $calender->copy()->addHour(9)->addDay(),
         ]);
 
-        $calender = Carbon::create(2025, 02, 02);
+        $calender = Carbon::create($year, $month, 02);
 
         DB::table('corrected_attendances')->insert([
             'user_id' => User::first()->id,
