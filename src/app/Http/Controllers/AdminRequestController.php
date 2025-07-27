@@ -53,7 +53,7 @@ class AdminRequestController extends Controller
         ]);
         Attendance::where('id', $correctedAttendance->attendance_id)->first()->touch();
         foreach ($correctedBreakTimes as $index => $correctedBreakTime) {
-            if (($index > 0 and $correctedBreakTimes[$index - 1]->break_time_id === $correctedBreakTimes[$index]->break_time_id) or (count($correctedBreakTimes) === 1)) { //
+            if (($index > 0 and $correctedBreakTimes[$index - 1]->break_time_id === $correctedBreakTimes[$index]->break_time_id) or (count($correctedBreakTimes) === 1)) {
                 // 追加で申請した休憩時間の場合、新規作成
                 BreakTime::create([
                     'attendance_id' => $correctedAttendance->attendance_id,

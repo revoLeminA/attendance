@@ -20,7 +20,8 @@ class CorrectedBreakTimesTableSeeder extends Seeder
         $corrected_attendances = CorrectedAttendance::all();
         $break_times = BreakTime::all();
 
-
+        $year = Carbon::now()->subMonth()->format('Y');
+        $month = Carbon::now()->subMonth()->format('m');
         foreach ($corrected_attendances as $corrected_attendance) {
             // 休憩1回
             DB::table('corrected_break_times')->insert([
@@ -32,9 +33,9 @@ class CorrectedBreakTimesTableSeeder extends Seeder
                 'updated_at' => $corrected_attendance->corrected_date->copy()->addHour(9)->addDay(),
             ]);
             // 休憩2回
-            if ($corrected_attendance->corrected_date->isSameDay(Carbon::parse('2025-02-01'))) {
+            if ($corrected_attendance->corrected_date->isSameDay(Carbon::parse($year . '-' . $month . '-01'))) {
                 DB::table('corrected_break_times')->insert([
-                    'break_time_id' => $break_times->where('attendance_id', $corrected_attendance->attendance_id)->first()->id+1,
+                    'break_time_id' => $break_times->where('attendance_id', $corrected_attendance->attendance_id)->first()->id + 1,
                     'corrected_attendance_id' => $corrected_attendance->id,
                     'corrected_break_start' => $corrected_attendance->corrected_date->copy()->addHour(15)->format('H:i'),
                     'corrected_break_end' => $corrected_attendance->corrected_date->copy()->addHour(16)->addMinute(30)->format('H:i'),
